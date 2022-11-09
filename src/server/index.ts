@@ -1,3 +1,4 @@
+import "../loadEnvironment.js";
 import debugCreator from "debug";
 import app from "../app.js";
 import chalk from "chalk";
