@@ -10,7 +10,7 @@ export const registerUser = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { username, password } = req.body as Credentials;
+  const { username, password, email } = req.body as Credentials;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -18,11 +18,10 @@ export const registerUser = async (
     const newUser = await User.create({
       username,
       password: hashedPassword,
+      email,
     });
 
-    res.status(201).json({
-      user: { id: newUser._id, username },
-    });
+    res.status(201).json({ newUser });
   } catch (error: unknown) {
     const customError = new CustomError(
       (error as Error).message,

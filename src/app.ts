@@ -4,6 +4,8 @@ import userRouter from "./server/routers/userRouter.js";
 
 const app = express();
 
+app.disable("x-powered-by");
+
 app.use(express.json());
 app.use(morgan("dev"));
 
