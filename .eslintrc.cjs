@@ -18,10 +18,16 @@ module.exports = {
         "@typescript-eslint/no-empty-function": "off",
       },
     },
+    {
+      files: ["src/**/model/**/*.ts"],
+      rules: { "@typescript-eslint/naming-convention": "off" },
+    },
   ],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "no-implicit-coercion": "off",
+  },
 };
