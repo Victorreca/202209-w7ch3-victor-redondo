@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import connectDatabase from "../../database";
 import app from "../../app.js";
 import User from "../../database/models/User/User.js";
-import type Credentials from "../controllers/usersControllers/types";
+import type { Credentials } from "../types";
 
 let server: MongoMemoryServer;
 
@@ -19,6 +19,7 @@ afterAll(async () => {
 });
 
 beforeEach(async () => {
+  // Limpia los tests
   await User.deleteMany();
 });
 
@@ -35,7 +36,7 @@ describe("Given a POST /users/register endpoint", () => {
 
       const response = await request(app)
         .post("/users/register")
-        .send(registerData)
+        .send(registerData) // Mete en el body de la request los valores q le digamos
         .expect(expectedStatus);
 
       expect(response.body).toHaveProperty("newUser");
