@@ -1,3 +1,4 @@
+import type { InferSchemaType } from "mongoose";
 import { Schema, model } from "mongoose";
 
 const itemSchema = new Schema({
@@ -11,9 +12,13 @@ const itemSchema = new Schema({
   },
   owner: {
     type: Schema.Types.ObjectId,
-    required: true,
+  },
+  picture: {
+    type: String,
   },
 });
+
+export type ItemStructure = InferSchemaType<typeof itemSchema>;
 
 const Item = model("Item", itemSchema, "items");
 

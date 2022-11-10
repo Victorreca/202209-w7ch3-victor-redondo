@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import connectDatabase from "../../database";
 import app from "../../app.js";
 import User from "../../database/models/User/User.js";
-import type Credentials from "../controllers/usersControllers/types";
+import type { Credentials } from "../types";
 
 let server: MongoMemoryServer;
 
